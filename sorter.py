@@ -16,15 +16,15 @@ def sort(width, height, length, mass):
       
     sides = [width, height, length]
     
+   #verify we do not get an overflow on calculating the area.
     try:
         result = width * height * length
         if result > (2**31 - 1) or result < (-2**31):
-            return "ERROR - OVERFLOW"
+            return "ERROR"
     except OverflowError as e:
         return "ERROR"
     
     bulky = any(num >= 150 for num in sides) or (result) >= 1000000
-    #bulkyLarge = any(num >= 150 for num in sides)
     heavy = mass >= 150
     
     if bulky and heavy:
@@ -53,7 +53,7 @@ class TestCompareNumbers(unittest.TestCase):
         self.assertEqual(sort(50, -50, 50, 50), "ERROR")
         self.assertEqual(sort(50, 50, -50, 50), "ERROR")
         self.assertEqual(sort(50, 50, 50, -50), "ERROR")
-        self.assertEqual(sort(1000000000, 3000, 50, 50), "ERROR - OVERFLOW")
+        self.assertEqual(sort(1000000000, 3000, 50, 50), "ERROR")
 
 if __name__ == '__main__':
     unittest.main()
