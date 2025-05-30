@@ -1,5 +1,5 @@
 # PackageSorting
-Function to sort packages based on size and mass</br>
+A Python function to sort packages based on size and mass</br>
 
 The packages are sorted using using the following criteria:</br>
 
